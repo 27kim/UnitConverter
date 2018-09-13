@@ -13,14 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDate
+//import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.xml.datatype.DatatypeConstants.DAYS
-
-
-
-
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -34,12 +30,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
     val sdf = SimpleDateFormat("yyyy/MM/dd")
 
     companion object {
-        val MMBTU_VALUE: Double = 1000.00000
-        val DEKA_VALUE: Double = 1000.23906
+        val MMBTU_VALUE: Double = 1_000.00000
+        val DEKA_VALUE: Double = 1_000.23906
         val GKCAL_VALUE: Double = 252.16440
         val TON_VALUE: Double = 19.33776
         val MCF_VALUE: Double = 964.32015
         val GJ_VALUE: Double = 1_055.05600
+        val KW_VALUE: Double = 293_071.070172
 
         val MMBTU_TEXT = "mmbtu"
         val DEKA_TEXT = "decatherm"
@@ -47,6 +44,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         val TON_TEXT = "ton(HHV basis)"
         val MCF_TEXT = "Mcf"
         val GJ_TEXT = "GJ"
+        val KW_TEXT = "KW"
 
         val IS_FIRST_TIME = "IS_FIRST_TIME"
         val INITIAL_DATE = "INITIAL_DATE"
@@ -59,13 +57,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
         initDrawer()
 
-        checkExpiredDate()
+//        checkExpiredDate()
 
         type = spinner.selectedItem?.toString() ?: "mmbtu"
         value = editText.text.toString().toLong()
 
-        val items = arrayOf(MMBTU_TEXT, GCAL_TEXT, TON_TEXT, MCF_TEXT, GJ_TEXT)
-        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, items)
+        val items = arrayOf(MMBTU_TEXT, DEKA_TEXT, GCAL_TEXT, TON_TEXT, MCF_TEXT, GJ_TEXT, KW_TEXT)
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
 
         spinner.setOnItemSelectedListener(this)
         spinner.adapter = spinnerAdapter
@@ -135,9 +133,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
             TON_TEXT -> TON_VALUE
             MCF_TEXT -> MCF_VALUE
             GJ_TEXT -> GJ_VALUE
+            KW_TEXT -> KW_VALUE
             else -> 0.0
         }
-        val df = DecimalFormat("#.##")
+        val df = DecimalFormat("#,###.##")
         df.roundingMode = RoundingMode.CEILING
         mmbtuValue.text = df.format((MMBTU_VALUE / baseType * val2)).toString()
         dekaValue.text = df.format((DEKA_VALUE / baseType * val2)).toString()
@@ -145,6 +144,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         tonValue.text = df.format((TON_VALUE / baseType * val2)).toString()
         mcfValue.text = df.format((MCF_VALUE / baseType * val2)).toString()
         gjValue.text = df.format((GJ_VALUE / baseType * val2)).toString()
+        kwValue.text = df.format((KW_VALUE / baseType * val2)).toString()
     }
 
     override fun onClick(p0: View?) {
@@ -175,5 +175,4 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
         return super.onOptionsItemSelected(item)
     }
-
 }

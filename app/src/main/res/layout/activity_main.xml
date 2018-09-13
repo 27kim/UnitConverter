@@ -28,12 +28,14 @@
                 android:id="@+id/editText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:gravity="right"
                 android:inputType="numberDecimal"
                 android:text="1000"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="20dp"
+                />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -41,23 +43,30 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:spinnerMode="dropdown"
+                android:textAlignment="center"
                 app:layout_constraintLeft_toRightOf="@id/editText" />
 
             <Button
                 android:id="@+id/btnChange"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1.4"
                 android:gravity="center"
-                android:text="Change"
+                android:text="Convert"
                 app:layout_constraintLeft_toLeftOf="@id/editText" />
 
         </LinearLayout>
 
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_margin="15dp"
+            android:background="#808080" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -65,8 +74,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="1000" />
 
             <TextView
@@ -89,8 +100,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="1,000.23906" />
 
             <TextView
@@ -112,8 +125,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="252.16440" />
 
             <TextView
@@ -135,8 +150,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="19.33776 " />
 
             <TextView
@@ -158,8 +175,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="964.32015" />
 
             <TextView
@@ -181,8 +200,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="1,055.05600 " />
 
             <TextView
@@ -191,6 +212,31 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="GJ" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/kwValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:text="293071.070172" />
+
+            <TextView
+                android:id="@+id/kwText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kw" />
         </LinearLayout>
 
     </LinearLayout>

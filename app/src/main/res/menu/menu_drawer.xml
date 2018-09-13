@@ -10,11 +10,11 @@
             <item
                 android:id="@+id/menu_drawer_location"
                 android:icon="@android:drawable/ic_menu_mylocation"
-                android:title="블루투스 설정" />
+                android:title="설정1" />
             <item
                 android:id="@+id/menu_drawer_category"
                 android:icon="@android:drawable/ic_menu_agenda"
-                android:title="지역 설정" />
+                android:title="설정2" />
         </menu>
 
     </item>
