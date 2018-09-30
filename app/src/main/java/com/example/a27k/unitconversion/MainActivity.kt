@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         val DEKA_VALUE: Double = 1_000.23906
         val GKCAL_VALUE: Double = 252.16440
         val TON_VALUE: Double = 19.33776
-        val MCF_VALUE: Double = 964.32015
+        val MCF_VALUE: Double = 980.39215
         val GJ_VALUE: Double = 1_055.05600
         val KW_VALUE: Double = 293_071.070172
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         val TON_TEXT = "ton(HHV basis)"
         val MCF_TEXT = "Mcf"
         val GJ_TEXT = "GJ"
-        val KW_TEXT = "KW"
+        val KW_TEXT = "kWh"
 
         val IS_FIRST_TIME = "IS_FIRST_TIME"
         val INITIAL_DATE = "INITIAL_DATE"
