@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         spinner.setOnItemSelectedListener(this)
         spinner.adapter = spinnerAdapter
 
-        btnChange.setOnClickListener(this)
+//        btnChange.setOnClickListener(this)
     }
 
     private fun checkExpiredDate() {
@@ -113,10 +113,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
             }
 
         }
-
-
-
-
     }
 
     private fun convertUnit() {

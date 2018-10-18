@@ -46,14 +46,14 @@
                 android:textAlignment="center"
                 app:layout_constraintLeft_toRightOf="@id/editText" />
 
-            <Button
-                android:id="@+id/btnChange"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.4"
-                android:gravity="center"
-                android:text="Convert"
-                app:layout_constraintLeft_toLeftOf="@id/editText" />
+            <!--<Button-->
+                <!--android:id="@+id/btnChange"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1.4"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Convert"-->
+                <!--app:layout_constraintLeft_toLeftOf="@id/editText" />-->
 
         </LinearLayout>
 
