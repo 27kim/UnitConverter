@@ -9,6 +9,8 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -28,6 +30,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
     var drawerToggle: ActionBarDrawerToggle? = null
 
     val sdf = SimpleDateFormat("yyyy/MM/dd")
+
+    //Admob
+    lateinit var mAdView : AdView
 
     companion object {
         val MMBTU_VALUE: Double = 1_000.00000
@@ -55,8 +60,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Drawer 초기화
         initDrawer()
 
+        //기간 만료 설정 주석
 //        checkExpiredDate()
 
         type = spinner.selectedItem?.toString() ?: "mmbtu"
@@ -68,7 +75,51 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         spinner.setOnItemSelectedListener(this)
         spinner.adapter = spinnerAdapter
 
-//        btnChange.setOnClickListener(this)
+        btnChange.setOnClickListener(this)
+        //Admob 초기화
+        initAdmob()
+
+    }
+
+    private fun initAdmob() {
+        MobileAds.initialize(this, "ca-app-pub-7918453442102652~5030918028")
+
+        //Admob
+        val adView = AdView(this)
+        adView.adSize = AdSize.BANNER
+        adView.adUnitId = "ca-app-pub-7918453442102652/9654357613"
+
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+        mAdView.adListener = object: AdListener() {
+            override fun onAdLoaded() {
+                Toast.makeText(applicationContext, "onAdLoaded", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAdFailedToLoad(errorCode : Int) {
+                // Code to be executed when an ad request fails.
+                Toast.makeText(applicationContext, "onAdFailedToLoad ${errorCode}", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+                Toast.makeText(applicationContext, "onAdOpened", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+                Toast.makeText(applicationContext, "onAdLeftApplication", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when when the user is about to return
+                // to the app after tapping on an ad.
+                Toast.makeText(applicationContext, "onAdClosed", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun checkExpiredDate() {
@@ -171,4 +222,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }

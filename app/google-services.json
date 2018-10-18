@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "754111248178",
+    "firebase_url": "https://unitconverter-5f2cc.firebaseio.com",
+    "project_id": "unitconverter-5f2cc",
+    "storage_bucket": "unitconverter-5f2cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754111248178:android:5407e65ac8113c7a",
+        "android_client_info": {
+          "package_name": "com.example.a27k.unitconversion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754111248178-4i1uqb64rslfjjs95nb09k0jhc1sa2f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqwaEbP42B7fyzHUloAWKX4BV4RmBvQsg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-7918453442102652~5030918028"
+    }
+  ],
+  "configuration_version": "1"
+}
