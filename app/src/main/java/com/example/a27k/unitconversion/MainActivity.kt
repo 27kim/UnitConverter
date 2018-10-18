@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
@@ -196,6 +197,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
     override fun onClick(p0: View?) {
         convertUnit()
+        //Crashlytics.getInstance().crash(); // Force a crash
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
