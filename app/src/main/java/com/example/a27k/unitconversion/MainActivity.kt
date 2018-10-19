@@ -2,6 +2,7 @@ package com.example.a27k.unitconversion
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
@@ -12,8 +13,11 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.a27k.unitconversion.R.id.menu_drawer_about
 import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -93,6 +97,18 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         //Admob 초기화
         initAdmob()
 
+        main_drawer_view.setNavigationItemSelectedListener {
+
+            if(it.title.equals("About")){
+                drawer.closeDrawers()
+
+                toast(it.toString())
+                var intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+            }
+
+            true
+        }
     }
 
     private fun initAdmob() {
@@ -107,33 +123,33 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
-        mAdView.adListener = object: AdListener() {
-            override fun onAdLoaded() {
-                Toast.makeText(applicationContext, "onAdLoaded", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onAdFailedToLoad(errorCode : Int) {
-                // Code to be executed when an ad request fails.
-                Toast.makeText(applicationContext, "onAdFailedToLoad ${errorCode}", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-                Toast.makeText(applicationContext, "onAdOpened", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-                Toast.makeText(applicationContext, "onAdLeftApplication", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when when the user is about to return
-                // to the app after tapping on an ad.
-                Toast.makeText(applicationContext, "onAdClosed", Toast.LENGTH_LONG).show()
-            }
-        }
+//        mAdView.adListener = object: AdListener() {
+//            override fun onAdLoaded() {
+//                Toast.makeText(applicationContext, "onAdLoaded", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onAdFailedToLoad(errorCode : Int) {
+//                // Code to be executed when an ad request fails.
+//                Toast.makeText(applicationContext, "onAdFailedToLoad ${errorCode}", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onAdOpened() {
+//                // Code to be executed when an ad opens an overlay that
+//                // covers the screen.
+//                Toast.makeText(applicationContext, "onAdOpened", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onAdLeftApplication() {
+//                // Code to be executed when the user has left the app.
+//                Toast.makeText(applicationContext, "onAdLeftApplication", Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onAdClosed() {
+//                // Code to be executed when when the user is about to return
+//                // to the app after tapping on an ad.
+//                Toast.makeText(applicationContext, "onAdClosed", Toast.LENGTH_LONG).show()
+//            }
+//        }
     }
 
     private fun checkExpiredDate() {

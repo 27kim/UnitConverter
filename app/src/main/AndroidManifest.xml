@@ -19,9 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AboutActivity">
+            <intent-filter>
+                <action android:name="com.example.ACTION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7918453442102652~5030918028"/>
+            android:value="ca-app-pub-7918453442102652~5030918028" />
     </application>
 
 </manifest>
