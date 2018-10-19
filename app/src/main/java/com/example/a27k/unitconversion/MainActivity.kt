@@ -6,17 +6,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.crashlytics.android.Crashlytics
 import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-//import java.time.LocalDate
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.xml.datatype.DatatypeConstants.DAYS
@@ -64,11 +64,24 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         //Drawer 초기화
         initDrawer()
 
-        //기간 만료 설정 주석
+        //기간 만료 설정
 //        checkExpiredDate()
 
         type = spinner.selectedItem?.toString() ?: "mmbtu"
         value = editText.text.toString().toLong()
+
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                convertUnit()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                convertUnit()
+            }
+        })
 
         val items = arrayOf(MMBTU_TEXT, DEKA_TEXT, GCAL_TEXT, TON_TEXT, MCF_TEXT, GJ_TEXT, KW_TEXT)
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
@@ -210,7 +223,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
     private fun initDrawer() {
         //NavigationDrawer 초기화
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.setDisplayShowTitleEnabled(true)
+
+        supportActionBar!!.title = "ENERGY UNIT CONVERTER"
 
         drawerToggle = ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_close)
         drawerToggle!!.syncState()
