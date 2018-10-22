@@ -5,13 +5,13 @@
     <!--android:id="@+id/menu_drawer_setting"-->
     <!--android:icon="@android:drawable/ic_menu_manage"-->
     <!--android:title="환경설정" />-->
-    <item android:title="Setting">
-        <menu>
+    <!--<item android:title="Setting">-->
+        <!--<menu>-->
             <item
                 android:id="@+id/menu_drawer_about"
-                android:icon="@android:drawable/ic_menu_mylocation"
+                android:icon="@android:drawable/ic_dialog_info"
                 android:title="About" />
-        </menu>
+        <!--</menu>-->
 
-    </item>
+    <!--</item>-->
 </menu>

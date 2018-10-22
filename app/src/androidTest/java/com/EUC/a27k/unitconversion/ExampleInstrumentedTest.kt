@@ -1,4 +1,4 @@
-package com.example.a27k.unitconversion
+package com.EUC.a27k.unitconversion
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

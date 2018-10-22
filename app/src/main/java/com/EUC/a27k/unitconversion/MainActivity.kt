@@ -1,4 +1,4 @@
-package com.example.a27k.unitconversion
+package com.EUC.a27k.unitconversion
 
 import android.content.Context
 import android.content.DialogInterface
@@ -12,18 +12,13 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import com.example.a27k.unitconversion.R.id.menu_drawer_about
 import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.xml.datatype.DatatypeConstants.DAYS
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -102,7 +97,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
             if(it.title.equals("About")){
                 drawer.closeDrawers()
 
-                toast(it.toString())
+//                toast(it.toString())
                 var intent = Intent(this, AboutActivity::class.java)
                 startActivity(intent)
             }
@@ -226,7 +221,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
     override fun onClick(p0: View?) {
         convertUnit()
-        //Crashlytics.getInstance().crash(); // Force a crash
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

@@ -1,4 +1,4 @@
-package com.example.a27k.unitconversion
+package com.EUC.a27k.unitconversion
 
 import org.junit.Test
 

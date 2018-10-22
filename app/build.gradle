@@ -15,7 +15,7 @@ android {
     }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.a27k.unitconversion"
+        applicationId "com.EUC.a27k.unitconversion"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
