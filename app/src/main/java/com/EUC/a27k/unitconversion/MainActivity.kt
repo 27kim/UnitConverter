@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TabHost
 import com.google.android.gms.ads.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
@@ -19,12 +20,17 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import com.EUC.a27k.unitconversion.R.id.tabHost1
+import org.jetbrains.anko.sdk27.coroutines.onClick
+
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     lateinit var type: String
     var value: Long = 0
     val PREFS_FILENAME = "UnitConverter"
+
+    val df = DecimalFormat("#,###.##")
 
     //NavigationDrawer Toggle
     var drawerToggle: ActionBarDrawerToggle? = null
@@ -59,6 +65,15 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Tab 초기화
+        initTab()
+
+        //섭씨 화씨 변환
+        watchCFValue()
+
+        //2번째 탭 공식 변환
+        watchInputValue()
 
         //Drawer 초기화
         initDrawer()
@@ -104,6 +119,71 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
             true
         }
+    }
+
+    private fun watchCFValue() {
+        tvCelcius.onClick {convertCtoF()  }
+        tvFarenheit.onClick { convertFtoC() }
+    }
+
+    /**
+     * 공식
+     * 860 / 0.252 / HR = 결과값
+     */
+    fun getResult(){
+        var input = tvInput.text.toString().toDouble()
+
+        var result = (860 / 0.252 / input).toString()
+
+        tvResult.setText(df.format(result))
+    }
+
+    private fun watchInputValue() {
+        tvInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                getResult()
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                getResult()
+            }
+        })
+    }
+
+    private fun convertFtoC() {
+        var fValue = farenheit.text.toString().toDouble()
+//(°F − 32) / 1.8
+        var result = (fValue-32) / 1.8
+        celcius.setText(df.format(result).toString())
+    }
+
+    private fun convertCtoF() {
+        var cValue = celcius.text.toString().toDouble()
+
+        var result = cValue * 1.8 + 32
+
+        farenheit.setText(df.format(result).toString())
+    }
+
+    private fun initTab() {
+        tabHost1.setup()
+        var ts1 = tabHost1.newTabSpec("Tab Spec 1") ;
+        ts1.setContent(R.id.content1)
+        ts1.setIndicator("TAB 1")
+        tabHost1.addTab(ts1)
+
+        var ts2 = tabHost1.newTabSpec("Tab Spec 2") ;
+        ts2.setContent(R.id.content2)
+        ts2.setIndicator("TAB 2")
+        tabHost1.addTab(ts2)
+
+        var ts3 = tabHost1.newTabSpec("Tab Spec 3") ;
+        ts3.setContent(R.id.content3)
+        ts3.setIndicator("TAB 3")
+        tabHost1.addTab(ts3)
     }
 
     private fun initAdmob() {
@@ -208,7 +288,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
             KW_TEXT -> KW_VALUE
             else -> 0.0
         }
-        val df = DecimalFormat("#,###.##")
+
         df.roundingMode = RoundingMode.CEILING
         mmbtuValue.text = df.format((MMBTU_VALUE / baseType * val2)).toString()
         dekaValue.text = df.format((DEKA_VALUE / baseType * val2)).toString()
