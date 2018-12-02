@@ -131,11 +131,15 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
      * 860 / 0.252 / HR = 결과값
      */
     fun getResult(){
-        var input = tvInput.text.toString().toDouble()
+        var input = tvInput.text.toString().toDoubleOrNull()
 
-        var result = (860 / 0.252 / input).toString()
+        input?.let{
+            if(input != 0.0) {
+                var result = 860 / 0.252 / input
 
-        tvResult.setText(df.format(result))
+                tvResult.setText(df.format(result))
+            }
+        }
     }
 
     private fun watchInputValue() {
@@ -172,17 +176,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         tabHost1.setup()
         var ts1 = tabHost1.newTabSpec("Tab Spec 1") ;
         ts1.setContent(R.id.content1)
-        ts1.setIndicator("TAB 1")
+        ts1.setIndicator("기존")
         tabHost1.addTab(ts1)
 
         var ts2 = tabHost1.newTabSpec("Tab Spec 2") ;
         ts2.setContent(R.id.content2)
-        ts2.setIndicator("TAB 2")
+        ts2.setIndicator("변환식")
         tabHost1.addTab(ts2)
 
         var ts3 = tabHost1.newTabSpec("Tab Spec 3") ;
         ts3.setContent(R.id.content3)
-        ts3.setIndicator("TAB 3")
+        ts3.setIndicator("온도 변환")
         tabHost1.addTab(ts3)
     }
 
