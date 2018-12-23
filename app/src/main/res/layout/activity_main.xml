@@ -274,49 +274,110 @@
                     </LinearLayout>
 
 
-
                 </android.support.constraint.ConstraintLayout>
 
 
+        <!--두번째 탭-->
                 <LinearLayout
                     android:id="@+id/content2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/formula"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="860 / 0.252 / " />
 
-                    <EditText
-                        android:id="@+id/tvInput"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text=" = " />
+                        <TextView
+                            android:id="@+id/formula"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:padding="8dp"
+                            android:text="Heat rate : " />
 
-                    <TextView
-                        android:id="@+id/tvResult"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="" />
+                        <EditText
+                            android:id="@+id/tvInput"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text=" btu / kw = " />
+
+                        <TextView
+                            android:id="@+id/tvResult"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text=" % " />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:padding="8dp"
+                            android:text="Temp : " />
+
+                        <EditText
+                            android:id="@+id/farenheit"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+
+                        <TextView
+                            android:id="@+id/tvFarenheit"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="°F  = " />
+
+                        <EditText
+                            android:id="@+id/celcius"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+
+                        <TextView
+                            android:id="@+id/tvCelcius"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="°C" />
+
+
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -326,37 +387,6 @@
                     android:orientation="horizontal">
 
 
-                    <EditText
-                        android:id="@+id/celcius"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"/>
-
-                    <TextView
-                        android:id="@+id/tvCelcius"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="°C" />
-
-                    <EditText
-                        android:id="@+id/farenheit"
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"/>
-
-                    <TextView
-                        android:id="@+id/tvFarenheit"
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="°F" />
                 </LinearLayout>
 
 

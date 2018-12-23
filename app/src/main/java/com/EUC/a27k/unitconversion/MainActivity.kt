@@ -124,6 +124,30 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
     private fun watchCFValue() {
         tvCelcius.onClick {convertCtoF()  }
         tvFarenheit.onClick { convertFtoC() }
+//        celcius.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(p0: Editable?) {
+//                convertCtoF()
+//            }
+//
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                convertCtoF()
+//            }
+//        })
+//        farenheit.addTextChangedListener (object : TextWatcher {
+//            override fun afterTextChanged(p0: Editable?) {
+//                convertFtoC()
+//            }
+//
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                convertFtoC()
+//            }
+//        })
     }
 
     /**
@@ -135,7 +159,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 
         input?.let{
             if(input != 0.0) {
-                var result = 860 / 0.252 / input
+                var result = 860 / 0.252 / input * 100
 
                 tvResult.setText(df.format(result))
             }
@@ -157,26 +181,40 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         })
     }
 
+    /**
+     * Farenheit to Celcius
+     * */
     private fun convertFtoC() {
-        var fValue = farenheit.text.toString().toDouble()
+        var fValue = farenheit.text.toString().toDoubleOrNull()
 //(°F − 32) / 1.8
-        var result = (fValue-32) / 1.8
-        celcius.setText(df.format(result).toString())
+        var result = (fValue?.minus(32))?.div(1.8)
+
+        result?.let {
+            celcius.setText(df.format(result).toString())
+        }
     }
 
+    /**
+     * Celcius to Farenheit
+     * */
     private fun convertCtoF() {
-        var cValue = celcius.text.toString().toDouble()
+        var cValue : Double? = celcius.text.toString().toDoubleOrNull()
 
-        var result = cValue * 1.8 + 32
+        var result = cValue?.times(1.8)?.plus(32)
 
-        farenheit.setText(df.format(result).toString())
+        result?.let {
+            farenheit.setText(df.format(result).toString())
+        }
     }
 
+    /**
+     * Initialize tabs
+     */
     private fun initTab() {
         tabHost1.setup()
         var ts1 = tabHost1.newTabSpec("Tab Spec 1") ;
         ts1.setContent(R.id.content1)
-        ts1.setIndicator("기존")
+        ts1.setIndicator("열량환산")
         tabHost1.addTab(ts1)
 
         var ts2 = tabHost1.newTabSpec("Tab Spec 2") ;
@@ -184,12 +222,15 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         ts2.setIndicator("변환식")
         tabHost1.addTab(ts2)
 
-        var ts3 = tabHost1.newTabSpec("Tab Spec 3") ;
-        ts3.setContent(R.id.content3)
-        ts3.setIndicator("온도 변환")
-        tabHost1.addTab(ts3)
+//        var ts3 = tabHost1.newTabSpec("Tab Spec 3") ;
+//        ts3.setContent(R.id.content3)
+//        ts3.setIndicator("온도 변환")
+//        tabHost1.addTab(ts3)
     }
 
+    /**
+     * initialize Admob service
+     */
     private fun initAdmob() {
         MobileAds.initialize(this, "ca-app-pub-7918453442102652~5030918028")
 
@@ -231,6 +272,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
 //        }
     }
 
+    /**
+     * 만료일 확인 기능
+     */
     private fun checkExpiredDate() {
 
         val prefs = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
@@ -314,6 +358,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, Vi
         convertUnit()
     }
 
+    /**
+     * NavigationDrawer 초기화
+     */
     private fun initDrawer() {
         //NavigationDrawer 초기화
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
